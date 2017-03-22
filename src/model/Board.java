@@ -3,29 +3,36 @@ package model;
 import java.util.Random;
 
 public class Board {
-    int rows = 3;
-    int collumns = 3;
-    String[][] boardArray = new String[rows][collumns];
+    final static int ROWS = 3;
+    final static int COLLUMNS = 3;
+    String[][] boardArray;
     public Board(){
+        this.boardArray = new String[ROWS][COLLUMNS];
         fillArray();
     }
 
     public void fillArray(){
-        for(int i=0; i<rows; i++){
-            for(int j=0; j<collumns;j++){
-//                boardArray[i][j] = c;
-                makeRandomChar();
-//                System.out.println(Arrays.toString(boardArray));
+        for(int i = 0; i< ROWS; i++){
+            for(int j = 0; j< COLLUMNS; j++){
+                boardArray[i][j] = makeRandomChar();
             }
         }
-
     }
 
-    public void makeRandomChar(){
+    private String makeRandomChar(){
         Random random = new Random();
-        int randomInt = (int)(random.nextInt()*26);
-        char base = (randomInt<26 ? 'A':'a');
-        System.out.println(base);
-//        return (char) (base+random % 26);
+        String letters = "abcdefghijklmnopqrstuvwxyz";
+        char letter = letters.charAt(random.nextInt(letters.length()));
+        return Character.toString(letter);
     }
+
+    public void printBoard(){
+        for (String[] item: boardArray){
+            for (String item1: item){
+                System.out.print(item1 +  " ");
+            }
+            System.out.println("");
+        }
+    }
+
 }
