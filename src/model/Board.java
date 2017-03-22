@@ -5,7 +5,7 @@ import java.util.Random;
 public class Board {
     int rows = 3;
     int collumns = 3;
-    int[][] boardArray = new int[rows][collumns];
+    String[][] boardArray = new String[rows][collumns];
     public Board(){
         fillArray();
     }
