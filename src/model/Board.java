@@ -3,9 +3,11 @@ package model;
 import java.util.Random;
 
 public class Board {
-    final static int ROWS = 3;
-    final static int COLLUMNS = 3;
+    final static int ROWS = 7;
+    final static int COLLUMNS = 7;
+
     String[][] boardArray;
+
     public Board(){
         this.boardArray = new String[ROWS][COLLUMNS];
         fillArray();
@@ -21,7 +23,7 @@ public class Board {
 
     private String makeRandomChar(){
         Random random = new Random();
-        String letters = "abcdefghijklmnopqrstuvwxyz";
+        String letters = "aaabcdeeefghiiijklmnooopqrstuuuvwxyz";
         char letter = letters.charAt(random.nextInt(letters.length()));
         return Character.toString(letter);
     }

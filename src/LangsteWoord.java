@@ -12,7 +12,7 @@ public String getLongestWords() throws FileNotFoundException {
 
             String longestWord = "";
             String current;
-            Scanner scan = new Scanner(new File("D:\\IdeaProjects\\InleverOpdracht2_JoeriJorisITV2E\\src\\WoordenLijst.txt"));
+            Scanner scan = new Scanner(new File("src/WoordenLijst.txt"));
 
 
             while (scan.hasNext()) {
