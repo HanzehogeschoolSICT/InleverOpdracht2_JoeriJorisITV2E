@@ -16,15 +16,8 @@ public class Tree {
         }
     }
 
-    public void fillTree(String[][] nestedArray){
-        Tree tree = new Tree();
-        int totalAmount = nestedArray[0].length * nestedArray.length;
+    public static void fillTree(String[][] nestedArray){
 
-        for (int i = 0; i > nestedArray[0].length; i++){
-            for (int j = 0; j > nestedArray.length; j++) {
-
-            }
-        }
     }
 
     public void fillNPrint(){

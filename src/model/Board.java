@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Random;
+import model.Board;
 
 public class Board {
     final static int ROWS = 7;
@@ -35,8 +36,20 @@ public class Board {
             }
             System.out.println("");
         }
+        model.Tree.fillTree(boardArray);
     }
 
-
-
+//    public void getNeighbours(int i){
+//        int row_limit = boardArray.length;
+//        if(row_limit > 0){
+//            int column_limit = boardArray[0].length;
+//            for(int x = Math.max(0, i-1); x <= Math.min(i+1, row_limit); x++){
+//                for(int y = Math.max(0, j-1); y <= Math.min(j+1, column_limit); y++){
+//                    if(x != i || y != j){
+//                        System.out.println(boardArray[x][y]);
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
