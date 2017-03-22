@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println("\n---GEVONDEN---");
 
-        getSolutions.readLines("za");
+//        getSolutions.readLines("za");
     }
 
 
