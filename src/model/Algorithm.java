@@ -1,4 +1,4 @@
-package algorithm;
+package model;
 
 public class Algorithm {
 }
