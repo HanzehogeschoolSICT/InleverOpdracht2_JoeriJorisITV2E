@@ -1,6 +1,7 @@
 package model;
 
 public class Tree {
+    Integer counter = 0;
     //hulp van: http://programtalk.com/java/java-tree-implementation/
     public static Node addChild(Node parent, String id) {
         Node node = new Node(parent);
@@ -14,10 +15,6 @@ public class Tree {
         for (Node each : node.getChildren()) {
             printTree(each, appender + appender);
         }
-    }
-
-    public static void fillTree(String[][] nestedArray){
-
     }
 
     public void fillNPrint(){
@@ -35,5 +32,16 @@ public class Tree {
         addChild(child2, "child-21");
 
         printTree(treeRootNode, " ");
+    }
+
+    public void createTreeFromBoard(String[][] nestedArray){
+        Node treeRootNode = new Node(null);
+        treeRootNode.setValue(nestedArray[0][0]);
+        Board board = new Board();
+        Integer[][] neighbours = board.getNeighbours(0,0);
+        for (Integer[] item:neighbours){
+            Node child = addChild(treeRootNode, nestedArray[item[0]][item[1]]);
+
+        }
     }
 }

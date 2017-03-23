@@ -39,9 +39,10 @@ public class Board {
             }
             System.out.println("");
         }
+        getNeighbours(0,0);
     }
 
-    private Integer[][] getNeighbours(int xIndex, int yIndex) {
+    public Integer[][] getNeighbours(int xIndex, int yIndex) {
         //skelet: http://stackoverflow.com/questions/652106/finding-neighbours-in-a-two-dimensional-array
         Integer[][] neighbours = new Integer[8][2];
         int count = 0;
@@ -60,6 +61,11 @@ public class Board {
                 }
             }
             System.out.println("\n");
+        }
+        for (Integer[] item: neighbours){
+            if (item[0]!= null) {
+                System.out.println(item[0] + ", "+ item[1]);
+            }
         }
         return neighbours;
     }
