@@ -9,7 +9,7 @@ public class GetSolutions {
 
     }
 
-    public void readLines(String var){
+    public void checkInWordlist(String var){
         try(BufferedReader br = new BufferedReader(new FileReader("src/WoordenLijst.txt"))){
             String line;
             while ((line = br.readLine())!=null){

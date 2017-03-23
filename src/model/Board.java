@@ -39,7 +39,7 @@ public class Board {
             }
             System.out.println("");
         }
-        getNeighbours(0,0);
+//        getNeighbours(0,0);
     }
 
     public Integer[][] getNeighbours(int xIndex, int yIndex) {
@@ -62,11 +62,11 @@ public class Board {
             }
             System.out.println("\n");
         }
-//        for (Integer[] item: neighbours){
-//            if (item[0]!= null) {
-//                System.out.println(item[0] + ", "+ item[1]);
-//            }
-//        }
+        for (Integer[] item: neighbours){
+            if (item[0]!= null) {
+                System.out.println(boardArray[item[0]][item[1]]);
+            }
+        }
         return neighbours;
     }
 }
