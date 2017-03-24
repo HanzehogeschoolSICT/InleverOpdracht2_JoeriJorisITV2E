@@ -9,7 +9,7 @@ public class Main {
         Board board = new Board();
         board.printBoard();
         GetSolutions getSolutions = new GetSolutions(board);
-        getSolutions.backtrackFunction(board.getBoardArray(0,0));
+        getSolutions.backtrackFunction(board.getBoardArray(0,0), 0, 0);
 
 
 

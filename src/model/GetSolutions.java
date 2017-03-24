@@ -12,31 +12,31 @@ public class GetSolutions {
         this.board = mainBoard;
     }
 
-    public void backtrackFunction(String startCombination) {
+    public void backtrackFunction(String startCombination, int x, int y) {
         String[] result = checkInWordlist(startCombination);
         //result: ["true", "woord"]
 
-        while (result[0] == "true"){
-            Integer[][] neighbours = board.getNeighbours(0,0);
-            if (result[1] != "") {
-                hits.add(result[1]);
-            }
+//        for (String[] item1 : board.boardArray) {
+//            for (String item : item1) {
+                while (result[0] == "true") {
+                    Integer[][] neighbours = board.getNeighbours(x, y);
 
-            for (Integer[] item:neighbours) {
-                backtrackFunction(startCombination + board.getLetter(item[0] , item[1]));
-            }
+                    if (result[1] != "") {
+                        hits.add(result[1]);
+                    }
+
+                    for (Integer[] items : neighbours) {
+                        if (items[0] != null) {
+                            backtrackFunction(startCombination + board.getLetter(items[0], items[1]), items[0], items[1]);
+                        }
+                    }
+                }
+                if (result[0] == "false") {
+                    System.out.println("Geen hits voor deze combi: " + startCombination);
+                }
+
+            System.out.println(hits);
         }
-        if (result[0] == "false"){
-            System.out.println("DIT IS EEN TEST");
-        }
-    }
-    //als er geen optie meer is; stop mefgt zoeken
-    //voor elke letter combinatie van het bord
-    //kijk of er woorden beginnen met die letter
-    //if true:
-    //geef terug:en of er een hit is van een volledig woord
-    //zoek door als er nog geen volledige hit is
-    //en dan moet die dat dus ook van het child ding doen met die combinatie
 
 
     private String[] checkInWordlist(String var){
