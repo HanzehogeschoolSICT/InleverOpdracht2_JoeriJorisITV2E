@@ -44,7 +44,7 @@ public class Board {
 
     public Integer[][] getNeighbours(int xIndex, int yIndex) {
         //skelet: http://stackoverflow.com/questions/652106/finding-neighbours-in-a-two-dimensional-array
-        Integer[][] neighbours = new Integer[8][3];
+        Integer[][] neighbours = new Integer[8][2];
         int count = 0;
         int rows = boardArray.length -1;
 
@@ -68,5 +68,14 @@ public class Board {
             }
         }
         return neighbours;
+    }
+
+    public String getLetter(int x, int y){
+        return boardArray[x][y];
+    }
+
+
+    public String getBoardArray(int x, int y){
+        return boardArray[x][y];
     }
 }

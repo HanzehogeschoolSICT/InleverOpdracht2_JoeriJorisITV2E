@@ -2,17 +2,16 @@ package main;
 
 import model.Board;
 import model.GetSolutions;
-import model.Node;
-import model.Tree;
 
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args){
         Board board = new Board();
-        GetSolutions getSolutions = new GetSolutions();
+        board.printBoard();
+        GetSolutions getSolutions = new GetSolutions(board);
+        getSolutions.backtrackFunction(board.getBoardArray(0,0));
 
-//        tree.printTree(tree.treeRootNode, " ");
+
 
         board.printBoard();
 //        Arrays.toString(board.getNeighbours(1,1));
