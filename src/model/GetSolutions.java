@@ -6,16 +6,25 @@ import java.io.FileReader;
 public class GetSolutions {
 
     public GetSolutions(){
+
     }
 
-    private void backtrackFunction(){
-        //BASECASE: als er geen optie meer is; stop met zoeken
+    private void backtrackFunction(String startCombination) {
+        String[] result = checkInWordlist();
+        //als result[1] niet null is opslaan als hit.
+        if (result[0] == "True"){
+            for (item:neighbours) {
+                backtrackfunction(startLetter + neigbour)
+            }
+        }
+    }
+        //als er geen optie meer is; stop met zoeken
         //voor elke letter combinatie van het bord
             //kijk of er woorden beginnen met die letter
                 //if true:
                     //geef terug:en of er een hit is van een volledig woord
                     //zoek door als er nog geen volledige hit is
-                //en dan moet die dat dus ook van het child ding doen met die combinatie
+                    //en dan moet die dat dus ook van het child ding doen met die combinatie
 
     }
 
