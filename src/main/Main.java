@@ -5,24 +5,16 @@ import model.GetSolutions;
 
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Board board = new Board();
         board.printBoard();
+        System.out.println("\n" + "---- Solutions ----");
+//        String firstChar = board.getLetter(0, 0);
+
         GetSolutions getSolutions = new GetSolutions(board);
-        getSolutions.backtrackFunction(board.getBoardArray(0,0), 0, 0);
+        getSolutions.total();
 
 
-
-        board.printBoard();
-//        Arrays.toString(board.getNeighbours(1,1));
-//        Arrays.deepToString(board.getNeighbours(1,1));
-//        System.out.println(board.getNeighbours(1,1));
-        board.getNeighbours(0,0);
-
-//        System.out.println("\n---GEVONDEN---");
-
-//        getSolutions.readLines("za");
+        System.out.println(getSolutions.getHits());
     }
-
-
 }

@@ -5,8 +5,8 @@ import java.util.Random;
 import model.Board;
 
 public class Board {
-    final static int ROWS = 3;
-    final static int COLLUMNS = 3;
+    final static int ROWS = 5;
+    final static int COLLUMNS = 5;
 
     String[][] boardArray;
 
@@ -60,22 +60,17 @@ public class Board {
                     }
                 }
             }
-            System.out.println("\n");
+//            System.out.println("\n");
         }
-        for (Integer[] item: neighbours){
-            if (item[0]!= null) {
-                System.out.println(boardArray[item[0]][item[1]]);
-            }
-        }
+//        for (Integer[] item: neighbours){
+//            if (item[0]!= null) {
+//                System.out.println(boardArray[item[0]][item[1]]);
+//            }
+//        }
         return neighbours;
     }
 
     public String getLetter(int x, int y){
-        return boardArray[x][y];
-    }
-
-
-    public String getBoardArray(int x, int y){
         return boardArray[x][y];
     }
 }
