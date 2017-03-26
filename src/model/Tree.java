@@ -47,14 +47,14 @@ public class Tree {
 //        printTree(treeRootNode, " ");
     }
 
-    public void createTreeFromBoard(String[][] nestedArray){
-        Node treeRootNode = new Node(null);
-        treeRootNode.setValue(nestedArray[0][0]);
-        Board board = new Board();
-        Integer[][] neighbours = board.getNeighbours(0,0);
-        for (Integer[] item:neighbours){
-            Node child = addChild(treeRootNode, nestedArray[item[0]][item[1]]);
-
-        }
-    }
+//    public void createTreeFromBoard(String[][] nestedArray){
+//        Node treeRootNode = new Node(null);
+//        treeRootNode.setValue(nestedArray[0][0]);
+//        Board board = new Board();
+//        Integer[][] neighbours = board.getNeighbours(0,0);
+//        for (Integer[] item:neighbours){
+//            Node child = addChild(treeRootNode, nestedArray[item[0]][item[1]]);
+//
+//        }
+//    }
 }

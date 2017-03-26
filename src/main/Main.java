@@ -3,15 +3,20 @@ package main;
 import model.Board;
 import model.GetSolutions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
-        Board board = new Board();
+        List<String> alreadyBeenHere = new ArrayList<>();
+
+        Board board = new Board(alreadyBeenHere);
         board.printBoard();
         System.out.println("\n" + "---- Solutions ----");
 //        String firstChar = board.getLetter(0, 0);
 
-        GetSolutions getSolutions = new GetSolutions(board);
+        GetSolutions getSolutions = new GetSolutions(alreadyBeenHere, board);
         getSolutions.total();
 
 

@@ -2,16 +2,16 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class GetSolutions {
+    List alreadyBeenHere;
     ArrayList<String> hits = new ArrayList<>();
     Set<String> hitsSet;
     Board board;
 
-    public GetSolutions(Board mainBoard){
+    public GetSolutions(List alreadyBeenHere, Board mainBoard){
+        this.alreadyBeenHere = alreadyBeenHere;
         this.board = mainBoard;
     }
 
@@ -19,20 +19,24 @@ public class GetSolutions {
 
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
         Integer[][] neighbours = board.getNeighbours(xLastLetter, yLastLetter);
+
         String[] result = checkInWordlist(startCombination);
 
         for (Integer[] singleNeighbour: neighbours) {
             if (singleNeighbour[0] != null) {
-                if (result[0] == "true") {
-                    if (result[1] != "") {
-                        hits.add(result[1]);
-                    }
-                    String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
+//                System.out.println("current "+ Arrays.deepToString(singleNeighbour));
+//                System.out.println("startcombi "+startCombination);
+//                System.out.println(alreadyBeenHere);
+                    if (result[0].equals("true")) {
+                        if (!result[1].equals("")) {
+                            hits.add(result[1]);
+                        }
+                        String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
 
-                    //recursive call
-                    backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
-                } else {
-//                    System.out.println("Geen hit voor: " + startCombination);
+                        //recursive call
+                        backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
+    //                } else {
+    //                    System.out.println("Geen hit voor: " + startCombination);
                 }
             }
         }
@@ -89,6 +93,7 @@ public class GetSolutions {
 
         for (int i = 0; i < boardArray.length; i++){
             for (int j = 0; j < boardArray.length; j++){
+                alreadyBeenHere.clear();
                 backtrackFunction(boardArray[i][j], i, j);
             }
         }

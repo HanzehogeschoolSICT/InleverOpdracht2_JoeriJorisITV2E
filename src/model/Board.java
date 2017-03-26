@@ -1,16 +1,19 @@
 package model;
 
-import java.util.Arrays;
+import main.Main;
+
+import java.util.List;
 import java.util.Random;
-import model.Board;
 
 public class Board {
-    final static int ROWS = 5;
-    final static int COLLUMNS = 5;
+    final static int ROWS = 3;
+    final static int COLLUMNS = 3;
 
+    List alreadyBeenHere;
     String[][] boardArray;
 
-    public Board() {
+    public Board(List alreadyBeenHere) {
+        this.alreadyBeenHere = alreadyBeenHere;
         this.boardArray = new String[ROWS][COLLUMNS];
         fillArray();
     }
@@ -44,6 +47,7 @@ public class Board {
 
     public Integer[][] getNeighbours(int xIndex, int yIndex) {
         //skelet: http://stackoverflow.com/questions/652106/finding-neighbours-in-a-two-dimensional-array
+
         Integer[][] neighbours = new Integer[8][2];
         int count = 0;
         int rows = boardArray.length -1;
@@ -53,20 +57,29 @@ public class Board {
             for (int x = Math.max(0, yIndex - 1); x <= Math.min(yIndex + 1, rows); x++) {
                 for (int y = Math.max(0, xIndex - 1); y <= Math.min(xIndex + 1, columns); y++) {
                     if (x != yIndex || y != xIndex) {
-                        neighbours[count][0] = x;
-                        neighbours[count][1] = y;
+                        if (alreadyBeenHere.contains(Integer.toString(x)+" "+Integer.toString(y))){
+                            System.out.println("het bestaat al  "+x+" "+y);
+                        }
+                        if (!alreadyBeenHere.contains(Integer.toString(x)+" "+Integer.toString(y))) {
+                            alreadyBeenHere.add(Integer.toString(x) + " " + Integer.toString(y));
+                            System.out.println(alreadyBeenHere);
+                            neighbours[count][0] = x;
+                            neighbours[count][1] = y;
+                        }
 
                         count++;
                     }
                 }
             }
-//            System.out.println("\n");
         }
+
 //        for (Integer[] item: neighbours){
 //            if (item[0]!= null) {
 //                System.out.println(boardArray[item[0]][item[1]]);
 //            }
 //        }
+
+//        System.out.println("Neighbours van: "+getLetter(xIndex, yIndex)+"  zijn: "+Arrays.deepToString(neighbours)); //print huidige letter en de neighbours er van
         return neighbours;
     }
 
