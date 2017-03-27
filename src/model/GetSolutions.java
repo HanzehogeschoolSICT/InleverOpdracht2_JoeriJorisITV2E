@@ -19,18 +19,21 @@ public class GetSolutions {
 
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
         Integer[][] neighbours = board.getNeighbours(xLastLetter, yLastLetter);
+//        System.out.println("startcombi: " + startCombination);
+//        System.out.println("current: "+xLastLetter+" "+yLastLetter);
+//        System.out.println(alreadyBeenHere);
 
         String[] result = checkInWordlist(startCombination);
+            if (result[0].equals("true")) {
+                if (!result[1].equals("")) {
+                    hits.add(result[1]);
+                } else {
+//                    System.out.println("geen hit voor "+startCombination);
+                }
 
         for (Integer[] singleNeighbour: neighbours) {
             if (singleNeighbour[0] != null) {
-//                System.out.println("current "+ Arrays.deepToString(singleNeighbour));
-//                System.out.println("startcombi "+startCombination);
 //                System.out.println(alreadyBeenHere);
-                    if (result[0].equals("true")) {
-                        if (!result[1].equals("")) {
-                            hits.add(result[1]);
-                        }
                         String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
 
                         //recursive call
@@ -40,28 +43,6 @@ public class GetSolutions {
                 }
             }
         }
-//
-//        //result: ["true", "woord"]
-//
-//                while (result[0] == "true") {
-//                    Integer[][] neighbours = board.getNeighbours(x, y);
-//
-//                    if (result[1] != "") {
-//                        hits.add(result[1]);
-//                    }
-//
-//                    for (Integer[] items : neighbours) {
-//                        if (items[0] != null) {
-//                            backtrackFunction(startCombination + board.getLetter(items[0], items[1]), items[0], items[1]);
-//                        }
-//                    }
-//                }
-//                if (result[0] == "false") {
-//                    System.out.println("Geen hits voor deze combi: " + startCombination);
-//                }
-//
-//            System.out.println(hits);
-//        }
     }
 
 
