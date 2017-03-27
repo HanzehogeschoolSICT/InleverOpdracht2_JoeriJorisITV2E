@@ -45,11 +45,9 @@ public class GetSolutions {
             while ((line = br.readLine())!=null){
                 if (line.matches("^"+var+".*")){
                     startBoolean = "true";
-//                    System.out.println("half hit: "+line);
                 }
                 if(line.matches(var)) {
                     word = var;
-//                    System.out.println("hit" + line);
                 }
             }
         } catch (Exception e){

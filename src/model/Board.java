@@ -40,7 +40,6 @@ public class Board {
             }
             System.out.println("");
         }
-//        getNeighbours(0,0);
     }
 
     public Integer[][] getNeighbours(int xIndex, int yIndex) {
