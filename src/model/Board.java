@@ -54,30 +54,13 @@ public class Board {
             for (int x = Math.max(0, yIndex - 1); x <= Math.min(yIndex + 1, rows); x++) {
                 for (int y = Math.max(0, xIndex - 1); y <= Math.min(xIndex + 1, columns); y++) {
                     if (x != yIndex || y != xIndex) {
-//                        if (alreadyBeenHere.contains(Integer.toString(x)+" "+Integer.toString(y))){
-//                            System.out.println("het bestaat al  "+x+" "+y);
-//                        }
-//                        if (!alreadyBeenHere.contains(Integer.toString(x)+" "+Integer.toString(y))) {
-//                            alreadyBeenHere.add(Integer.toString(xIndex)+" "+ Integer.toString(yIndex));
-//                            alreadyBeenHere.add(Integer.toString(x) + " " + Integer.toString(y));
-//                            System.out.println(alreadyBeenHere);
                             neighbours[count][0] = x;
                             neighbours[count][1] = y;
-//                        }
-
                         count++;
                     }
                 }
             }
         }
-
-//        for (Integer[] item: neighbours){
-//            if (item[0]!= null) {
-//                System.out.println(boardArray[item[0]][item[1]]);
-//            }
-//        }
-
-//        System.out.println("Neighbours van: "+getLetter(xIndex, yIndex)+"  zijn: "+Arrays.deepToString(neighbours)); //print huidige letter en de neighbours er van
         return neighbours;
     }
 

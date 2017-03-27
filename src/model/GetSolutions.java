@@ -39,7 +39,7 @@ public class GetSolutions {
     private String[] checkInWordlist(String var){
         String startBoolean = "false";
         String word = "";
-        //Laat dit in de constructor gebeuren? Nu gebeurt dit elke keer dat functie aangeroepen wordt
+
         try(BufferedReader br = new BufferedReader(new FileReader("src/WoordenLijst.txt"))){
             String line;
             while ((line = br.readLine())!=null){
