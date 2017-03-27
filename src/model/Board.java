@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Board {
-    final static int ROWS = 4;
-    final static int COLLUMNS = 4;
+    final static int ROWS = 5;
+    final static int COLLUMNS = 5;
 
     List alreadyBeenHere;
     String[][] boardArray;

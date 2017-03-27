@@ -15,6 +15,7 @@ public class Main {
         board.printBoard();
         System.out.println("\n" + "---- Solutions ----");
 //        String firstChar = board.getLetter(0, 0);
+        //comment hier
 
         GetSolutions getSolutions = new GetSolutions(alreadyBeenHere, board);
         getSolutions.total();
