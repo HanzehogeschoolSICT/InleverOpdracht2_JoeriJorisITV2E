@@ -15,31 +15,21 @@ public class GetSolutions {
         this.board = mainBoard;
     }
 
-//    public void backtrackFunction(String startCombination, int x, int y) {
-
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
-        Integer[][] neighbours = board.getNeighbours(xLastLetter, yLastLetter);
-//        System.out.println("startcombi: " + startCombination);
-//        System.out.println("current: "+xLastLetter+" "+yLastLetter);
-//        System.out.println(alreadyBeenHere);
-
         String[] result = checkInWordlist(startCombination);
-            if (result[0].equals("true")) {
-                if (!result[1].equals("")) {
-                    hits.add(result[1]);
-                } else {
-//                    System.out.println("geen hit voor "+startCombination);
-                }
+        if (result[0].equals("true")) {
+            if (!result[1].equals("")) {
+                hits.add(result[1]);
+            }
 
-        for (Integer[] singleNeighbour: neighbours) {
-            if (singleNeighbour[0] != null) {
-//                System.out.println(alreadyBeenHere);
-                        String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
+            Integer[][] neighbours = board.getNeighbours(yLastLetter, xLastLetter);
+            for (Integer[] singleNeighbour: neighbours) {
+                if (singleNeighbour[0] != null) {
+                    String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
+//                    System.out.println(nextChar + " = " + xLastLetter + ", " + yLastLetter);
 
-                        //recursive call
-                        backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
-    //                } else {
-    //                    System.out.println("Geen hit voor: " + startCombination);
+                    //recursive call
+                    backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
                 }
             }
         }
@@ -80,12 +70,6 @@ public class GetSolutions {
         }
 
          hitsSet = new LinkedHashSet<>(hits);
-
-//        for (String[] subArray:boardArray){
-//            for (String subSubArray: subArray){
-//                backtrackFunction(subSubArray);
-//            }
-//        }
     }
 
     public Set<String> getHits(){
