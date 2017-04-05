@@ -16,10 +16,10 @@ public class GetSolutions {
     }
 
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
-        String[] result = checkInWordlist(startCombination);
-        if (result[0].equals("true")) {
-            if (!result[1].equals("")) {
-                hits.add(result[1]);
+        Word result = checkInWordlist(startCombination);
+        if (result == Word.WORD_START) {
+            if (result == Word.WORD_COMPLETE) {
+                hits.add(startCombination);
             }
 
             Integer[][] neighbours = board.getNeighbours(yLastLetter, xLastLetter);
@@ -36,25 +36,24 @@ public class GetSolutions {
     }
 
 
-    private String[] checkInWordlist(String var){
-        String startBoolean = "false";
-        String word = "";
+    private Word checkInWordlist(String var){
+        Word word = Word.NO_WORD;
 
         try(BufferedReader br = new BufferedReader(new FileReader("src/WoordenLijst.txt"))){
             String line;
             while ((line = br.readLine())!=null){
                 if (line.matches("^"+var+".*")){
-                    startBoolean = "true";
+                    word = Word.WORD_START;
                 }
                 if(line.matches(var)) {
-                    word = var;
+                    word = Word.WORD_COMPLETE;
                 }
             }
         } catch (Exception e){
             e.printStackTrace();
         }
-        String[] returnArray = {startBoolean, word};
-        return returnArray;
+//        String[] returnArray = {startBoolean, word};
+        return word;
     }
 
     public void total(){
