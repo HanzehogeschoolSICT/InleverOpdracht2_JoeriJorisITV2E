@@ -6,8 +6,6 @@ public class LangsteWoord {
             new LangsteWoord().getLongestWords();
     }
 
-    //////LANGSTE WOORD, 25 tekens
-
 public String getLongestWords() throws FileNotFoundException {
 
             String longestWord = "";

@@ -16,13 +16,15 @@ public class GetSolutions {
     }
 
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
-        alreadyBeenHere.add(board.getLetter(xLastLetter, yLastLetter));
+        alreadyBeenHere.add(Integer.toString(xLastLetter) + " " + Integer.toString(yLastLetter));
         Word result = checkInWordlist(startCombination);
         if (result == Word.WORD_COMPLETE) {
             hits.add(startCombination);
+            alreadyBeenHere.clear();
             searchFurther(startCombination, xLastLetter, yLastLetter);
         }
         if (result == Word.WORD_START) {
+            alreadyBeenHere.clear();
             searchFurther(startCombination, xLastLetter, yLastLetter);
         }
     }
@@ -32,12 +34,9 @@ public class GetSolutions {
         for (Integer[] singleNeighbour: neighbours) {
             if (singleNeighbour[0] != null) {
                 String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
-                if(!alreadyBeenHere.contains(nextChar)){
+                if(!alreadyBeenHere.equals(Integer.toString(xLastLetter) + " " + Integer.toString(yLastLetter))){
                     backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
                 }
-//                    System.out.println(nextChar + " = " + xLastLetter + ", " + yLastLetter);
-
-                //recursive call
             }
         }
     }
@@ -59,8 +58,6 @@ public class GetSolutions {
         } catch (Exception e){
             e.printStackTrace();
         }
-//        String[] returnArray = {startBoolean, word};
-//        System.out.println(word);
         return word;
     }
 
