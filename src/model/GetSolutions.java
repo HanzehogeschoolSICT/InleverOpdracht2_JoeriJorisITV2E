@@ -17,27 +17,31 @@ public class GetSolutions {
 
     public void backtrackFunction(String startCombination, int xLastLetter, int yLastLetter) {
         Word result = checkInWordlist(startCombination);
+        if (result == Word.WORD_COMPLETE) {
+            hits.add(startCombination);
+            searchFurther(startCombination, xLastLetter, yLastLetter);
+        }
         if (result == Word.WORD_START) {
-            if (result == Word.WORD_COMPLETE) {
-                hits.add(startCombination);
-            }
+            searchFurther(startCombination, xLastLetter, yLastLetter);
+        }
+    }
 
-            Integer[][] neighbours = board.getNeighbours(yLastLetter, xLastLetter);
-            for (Integer[] singleNeighbour: neighbours) {
-                if (singleNeighbour[0] != null) {
-                    String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
+    private void searchFurther(String startCombination, int xLastLetter, int yLastLetter){
+        Integer[][] neighbours = board.getNeighbours(xLastLetter, yLastLetter);
+        for (Integer[] singleNeighbour: neighbours) {
+            if (singleNeighbour[0] != null) {
+                String nextChar = board.getLetter(singleNeighbour[0], singleNeighbour[1]);
 //                    System.out.println(nextChar + " = " + xLastLetter + ", " + yLastLetter);
 
-                    //recursive call
-                    backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
-                }
+                //recursive call
+                backtrackFunction(startCombination + nextChar, singleNeighbour[0], singleNeighbour[1]);
             }
         }
     }
 
 
     private Word checkInWordlist(String var){
-        Word word = Word.NO_WORD;
+    Word word = Word.NO_WORD;
 
         try(BufferedReader br = new BufferedReader(new FileReader("src/WoordenLijst.txt"))){
             String line;
@@ -53,6 +57,7 @@ public class GetSolutions {
             e.printStackTrace();
         }
 //        String[] returnArray = {startBoolean, word};
+//        System.out.println(word);
         return word;
     }
 

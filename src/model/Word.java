@@ -1,9 +1,9 @@
 package model;
 
 public enum Word {
-    NO_WORD(""),
-    WORD_START("S"),
-    WORD_COMPLETE("C");
+    NO_WORD("              No_word"),
+    WORD_START("               Start"),
+    WORD_COMPLETE("               Complete");
 
     private String str;
 
@@ -11,5 +11,4 @@ public enum Word {
 
     @Override
     public String toString() { return str; }
-
 }

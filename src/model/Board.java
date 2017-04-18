@@ -51,9 +51,9 @@ public class Board {
 
         if (rows > 0) {
             int columns = boardArray[0].length -1;
-            for (int x = Math.max(0, yIndex - 1); x <= Math.min(yIndex + 1, rows); x++) {
-                for (int y = Math.max(0, xIndex - 1); y <= Math.min(xIndex + 1, columns); y++) {
-                    if (x != yIndex || y != xIndex) {
+            for (int x = Math.max(0, xIndex - 1); x <= Math.min(xIndex + 1, rows); x++) {
+                for (int y = Math.max(0, yIndex - 1); y <= Math.min(yIndex + 1, columns); y++) {
+                    if (x != xIndex || y != yIndex) {
                             neighbours[count][0] = x;
                             neighbours[count][1] = y;
                         count++;
