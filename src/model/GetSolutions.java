@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.util.*;
 
 public class GetSolutions {
-    List alreadyBeenHere;
+    static List alreadyBeenHere;
     ArrayList<String> hits = new ArrayList<>();
     Set<String> hitsSet;
     Board board;
